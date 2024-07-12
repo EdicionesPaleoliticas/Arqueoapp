@@ -1,0 +1,595 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+
+}
+
+body{
+    background: url('./img/background-manos.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    z-index: -10;
+}
+
+body::before{
+    background-color: black;
+    content: '';
+    width: 500px;
+    height: 500px;
+
+}
+
+.body{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+.imagen-fondo img{
+z-index: -5;
+position: absolute;
+max-width: 200px;
+opacity: .5;
+
+}
+
+.imagen-fondo img:first-child{
+    left: 10px;
+    bottom: 10px;
+    transform: rotate(-5deg);
+}
+
+
+.logo-canal{
+    top: 35px;
+    left: 20px;
+    position: absolute;
+    transform: rotate(5deg);
+}
+
+.imagen-fondo img:last-child{
+    right: 30px;
+    bottom: 10px;
+    transform: rotate(6deg);
+}
+
+
+/* MAPA */
+
+.map{
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+    min-height: 500px;
+    width: 90%;
+    height: 80%;
+    margin: 10px;
+    opacity: .9;
+}
+
+.botonera{
+    width: 50px;
+    position: fixed;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+.btn {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px;
+    background-color: rgba(0, 255, 255, 0.438);
+    filter: blur(1.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    color: black;
+}
+
+.btn i {
+    color: white;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.btn:hover::after{
+    font-family: monospace;
+    font-size: medium;
+    content: attr(alt);
+    transition: .3s;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    background-color: rgba(23, 71, 55, 0.705);
+    color: azure;
+    position: absolute;
+    left: -100px;
+    max-width: 100px;
+}
+
+.btn:hover i{
+    color: rgb(255, 251, 0);
+}
+
+.btn:active{
+    transform: scale(.9);
+}
+/* Panel Filtro */
+.panel-filtro{
+    width: 500px;
+    background-color: rgba(250, 235, 215, 0.918);
+    box-shadow: 0 0 10;
+    padding: 20px;
+    gap: 6px;
+    border-radius: 20px;
+    right: 80px;
+    position: absolute;
+    z-index: 9999;
+    transition: .3s;
+}
+
+.panel-filtro h2 {
+    font-size: 13px;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.panel-filtro select, button{
+    padding: 4px;
+}
+
+
+
+
+
+/* INFO Contenedor */
+.info-ctn {
+width: 450px;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+font-size: 13px;
+background-color: rgba(255, 255, 255, 0.685);
+border-radius: 10px;
+box-shadow: 0 0 10px;
+padding: 20px;
+position: absolute;
+right: 60px;
+z-index: 999;
+max-height: 80%;
+}
+
+.info-ctn .cruz-cerrar{
+    position: absolute;
+} 
+
+.none{
+    display: none;
+}
+
+.info-ctn-head{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-ctn-head:first-child h1{
+    margin: 8px;
+}
+
+
+/* ICONOS EN INFO-CTN */
+
+.iconos-ctn{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.iconos-ctn div{
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+    padding: 3px;
+    border: 2px solid black;
+}
+
+.iconos-ctn div img {
+    width: 30px;
+    height: 30px;    
+}
+
+.div-selector {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.div-selector.selected {
+    background-color: lightgreen;
+}
+
+.info-ctn-head-latlon {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: bold;
+    gap: 5px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.info-ctn-head-latlon:hover{
+    cursor: pointer;
+    background-color: rgba(137, 43, 226, 0.808);
+    transform: scale(1.2);
+}
+
+
+.info-ctn h2{
+    font-size: 12px;
+    margin:3px;
+}
+
+#wiki-extract {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 3px;
+}
+
+.info-img{
+    height: 100px;
+    box-shadow: 0 0 5px;
+    border-radius: 10px;
+    transform: rotate(-5deg);
+}
+
+/* COMENTARIOS Y ANOTACIONES */
+
+.comentarios textarea{
+    background-color: rgba(46, 46, 46, 0.678);
+    border-radius:20px;
+    padding: 20px;
+    box-shadow: 0 0 10px black;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-family: monospace;
+    z-index: 999;
+    cursor:move;
+    position: fixed;
+    width: 420px;
+    height: 120px;
+    bottom: 10px;
+}
+
+.comentarios{
+    cursor: move;
+    position: absolute;
+
+
+}
+
+/* WIKI BUSCADOR */
+
+.wiki-buscador-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    bottom: 0px;
+    left: 40%;
+    z-index: 99999;
+;}
+
+.wiki-buscador{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+    text-align: center;
+    padding: 6px;
+    gap: 6px;
+    cursor: move;
+    z-index: 99999;
+    background-color: rgba(240, 248, 255, 0.747);
+    min-width: 300px;
+}
+
+.wiki-buscador div{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+
+}
+
+.wiki-buscador div input {
+    padding:8px;
+    border-radius: 10px;
+}
+
+.wiki-buscador div button {
+    border-radius: 10px;
+    min-width: 40px;
+    aspect-ratio: 1/1;
+    box-shadow: 0 2px 3px;
+    cursor: pointer;
+}
+
+.wiki-buscador .lista {
+    background-color: rgba(250, 235, 215, 0.733);
+    flex-direction: column;
+    box-shadow: 0 0 5px;
+    border-radius: 10px;
+}
+
+.resultados{
+    padding: 3px;
+}
+
+.resultados:hover{
+    cursor: pointer;
+    background-color: rgb(27, 150, 11);
+    color: aliceblue;
+    transition: .3s;
+}
+
+.cruz-cerrar{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+/* CONSOLA */
+
+.consola {
+    background-color: rgba(48, 43, 43, 0.849);
+    color: white;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    height: 40px;
+    box-shadow: 0 0 5px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BASE DE DATOS */
+
+.database-section{
+    position: fixed;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+}
+
+.database{
+    overflow-y: auto;
+    max-height: 80dvh;
+    margin: 20px;
+}
+
+.database span{
+    float: right;
+    padding: 10px;
+    color: red;
+    transition: .3s;
+}
+
+.database span:hover {
+    transform: scale(1.1);
+}
+
+.database > .btn {
+    display: none;
+}
+
+.database span:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.table {
+    display: table;
+    width: 100%;
+    font-size: 12px;
+    background-color: rgba(235, 233, 232, 0.945);
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  
+  .row {
+    display: table-row;
+    width: min-content;
+  }
+  .row > *:nth-of-type(4) {
+    max-width: 400px;/* Estilos para el cuarto hijo */
+  }
+
+  .cell {
+    display: table-cell;
+    padding: 4px;
+    border: 1px solid #4e4b4b;
+  }
+
+  .cell div {
+    display: inline;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .header-cell {
+    font-weight: bold;
+    text-transform: capitalize;
+    background-color: rgba(0, 0, 0, 0.87);
+    color: white;
+    padding: 6px;
+    text-transform: uppercase;
+  }
+
+/*  FORMULARIO  */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(30, 255, 0, 0.568);
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+    padding: 10px;
+    font-size: 13px;
+    width: 350px;
+    text-align: center;
+    color: white;
+}
+
+
+.equis {
+    font-weight: bolder;
+    color: red;
+    border-radius: 50%;
+    transition: .3s;
+    align-self: flex-end;
+    align-content: end;
+    padding: 10px;
+}
+
+.equis:hover{
+    cursor: pointer;
+    transform: scale(1,1)
+}
+
+.formulario button {
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 10px;
+    align-self: flex-end;
+}
+
+.sitio-form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sitio-form input, .sitio-form textarea{
+    padding: 5px;
+    border-radius: 10px;
+    
+} 
+
+.spanloco{
+    background-color: rgb(245, 7, 19);
+}
+
+.modals-buttons {
+    display: flex;
+}
+
+/* BASE ESCRITORIO */
+
+.contenedorsio{
+    position: fixed;
+}
+
+.bd-escritorio-ctn{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    padding: 3px;
+    z-index: 999;
+    width: 300px;
+    max-height: 250px;
+    background-color: rgba(255, 255, 255, 0.63);
+    border-radius: 5px;
+    box-shadow: 0 0 10px;
+    transition: .3s;
+}
+
+.negro{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.904);
+    color: white;
+    padding: 6px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    text-align: center;
+    z-index: 99999;
+}
+
+
+.bd-escritorio-ctn:hover{
+    cursor: move;
+}
+
+.bd-escritorio-filas {
+    font-size: 12px;
+    transition: .3s;
+    overflow-y: auto;
+}
+
+.bd-escritorio-filas div:hover{
+    background-color: rgba(127, 255, 212, 0.904);
+    transition: .3s;
+}
+
+.bd-escritorio-filas div div:hover{
+    transform: scale(1.7);
+}
+
+.bd-escritorio-filas div{
+    display: flex;
+    gap:8px;
+    justify-content: end;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.none{
+    display: none;
+}
+
+.hidden{
+    height: 0px;
+    overflow-y: clip;
+    display: none;
+}
+
+.wiki-btn{
+    float: right;
+    transition: .3s;
+}
+.wiki-btn:hover{
+    transform: scale(1.2);
+    color: blue;
+}
+

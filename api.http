@@ -1,0 +1,37 @@
+### Recuperar todas las películas
+GET http://localhost:1234/sitios
+
+### Recuperar todas los sitios por un género
+GET http://localhost:1234/sitios?genre=ADVENTURE
+
+### Recuperar una sitio por id
+GET http://localhost:1234/sitios/235102
+
+### Crear una sitio con POST
+POST http://localhost:1234/sitios
+Content-Type: application/json
+
+    { 
+      "nombre": "loladasdasd",
+      "notas": "loladasdasd",
+      "lat": 1.2,
+      "lon": 1.2, 
+      "wikiURL":"loladasdasd",
+      "imgURL":"loladasdasd",
+      "tituloWiki":"loladasdasd",
+      "idWiki":2352,
+      "icono":"loladasdasd",
+      "extracto":"loladasdasd"
+    }
+
+### Borrar una película
+DELETE http://localhost:1234/sitios/2352
+
+### Actualizar una película
+PATCH http://localhost:1234/sitios/235102
+Content-Type: application/json
+
+{
+  "notas": "La Gordakkkkk",
+  "icono": "sdfsdfsdfdsf"
+}

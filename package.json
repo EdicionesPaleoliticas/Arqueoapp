@@ -1,0 +1,20 @@
+{
+  "name": "arqueoweb",
+  "version": "1.0.0",
+  "description": "Enésimo intento, a ver si en esta no me enredo :D",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch app.js",
+    "test": "start app.js"
+  },
+  "author": "H. Anonimus",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "leaflet-simple-map-screenshoter": "^0.5.0",
+    "mysql2": "^3.10.2",
+    "zod": "^3.22.4"
+  }
+}

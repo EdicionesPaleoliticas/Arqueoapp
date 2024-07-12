@@ -1,0 +1,25 @@
+--creación de una base de datos;
+CREATE DATABASE sitiosDB;
+
+..usar
+USE sitiosDB;
+
+create TABLE sitio(
+wikiID INT NOT NULL PRIMARY KEY,
+nombre VARCHAR(255),
+lat float NOT NULL,
+lon float NOY NULL,
+notas TEXT,
+imgURL TEXT,
+tituloWiki VARCHAR(255),
+wikiURL TEXT,
+extracto TEXT,
+icono VARCHAR(255)
+)
+
+INSERT INTO sitio (wikiID, nombre, lat,lon, notas, imgURL,tituloWiki,WikiURL,extracto,icono) VALUES
+(1234, "Piramide La Concha", 12.324, 1.2345, "No hay ninguna nota", "imagenurl.con.cha", "La Gran piramide de la Conchi", "https://wikipedia.org","Esta es una piramide en forma de concha que en el medio tiene restos arqueológicos", "iconodeunapiramide.png"),
+(12434, "Piramide La fdfdoncha", 22.324, 1.2345, "No hay n21323dsfddinguna nota", "imageneweeerl.ton.cha", "Laonchi", "https://wikipedia.org/api","Esta dsdsd wed dfdsf dsf df que en el medio tiene restos arqueológicos", "iconodeunapiJamide.png"),
+(234, "Pirsadaamide La Concha", 1.324, 1.2345, "Nosadasd hay ninguna nota", "saddsasdasdimagenurl.con.cha", "Lasdasdasdasdasd Gran piramide de la Conchi", "https://wikipedasdasdsadia.org","Esta edasdsads una piramide en fdasdasorma de conasdsadcha que en el masdsadedio tiene restos arqueológiasdsadcos", "iconoasdsadsddedasdunapiramide.jpg"),
+
+
