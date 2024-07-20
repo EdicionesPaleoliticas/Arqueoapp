@@ -96,10 +96,5 @@ app.listen(PORT, () => {
     console.log(`Corriendo el Servidor en: http://localhost:${PORT}`)
     })
 
-
-  // Ruta raíz para verificar que el servidor está funcionando
-  app.get('/', (req, res) => {
-    res.send('Servidor funcionando correctamente');
-  });
 }
 
