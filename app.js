@@ -95,6 +95,7 @@ const PORT = process.env.PORT ?? 1234
 app.listen(PORT, () => {
     console.log(`Corriendo el Servidor en: http://localhost:${PORT}`)
     })
-
+// Middleware para servir archivos estáticos desde el directorio './public'
+app.use(express.static(path.join(__dirname, 'public')));
 }
 
