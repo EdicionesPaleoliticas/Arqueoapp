@@ -50,7 +50,7 @@ app.get('/api/wikipedia/porid', async (req, res) => {
 const pageid = req.query.q; // ID de la página de Wikipedia que se desea consultar
 
 //const sitioExistente = await bd.find(sitio => sitio.idWiki === parseInt(pageid));
-const response = await fetch(`http://localhost:1234/sitios/${pageid}`)
+const response = await fetch(`http://localhost:${PORT}/sitios/${pageid}`)
 const sitioExistente = await response.json()
 
 if(response.status !== 404){
@@ -95,5 +95,11 @@ const PORT = process.env.PORT ?? 1234
 app.listen(PORT, () => {
     console.log(`Corriendo el Servidor en: http://localhost:${PORT}`)
     })
+
+
+  // Ruta raíz para verificar que el servidor está funcionando
+  app.get('/', (req, res) => {
+    res.send('Servidor funcionando correctamente');
+  });
 }
 
