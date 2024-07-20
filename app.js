@@ -2,6 +2,7 @@ import express, {json} from "express"
 import { corsMiddleware } from './middlewares/cors.js'
 import { createSitioRouter } from './routes/sitios.js'
 import { readJSON } from './utils.js'
+import path from 'path';
 
 const bd = readJSON('./sitios.json')
 
