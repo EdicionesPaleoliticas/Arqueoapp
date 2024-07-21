@@ -6,7 +6,7 @@ export class SitioModel {
   static async getAll({ icono }) {
     console.log('gente', icono);
     if (icono) {
-        const lowerCaseIcono = "https://arqueoapp.onrender.com/" + icono.toLowerCase() + ".png";
+        const lowerCaseIcono = `https://arqueoapp.onrender.com/${icono.toLowerCase()}.png`;
         console.log(lowerCaseIcono);
 
         return bd.filter(
