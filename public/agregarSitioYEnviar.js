@@ -19,7 +19,7 @@ export async function agregarSitioYEnviar(dataSitio) {
         };
     
         try {
-            const response = await fetch('https:/arqueoapp.onrender.com//sitios', options);
+            const response = await fetch('https:/arqueoapp.onrender.com/sitios', options);
             const json = await response.json();
             guardarElemento(dataSitio);
 
