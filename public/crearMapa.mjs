@@ -10,7 +10,7 @@ export function crearMapa() {
 
 
     // Configurar capa de azulejos (tiles)
-    const attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+    const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
     const tileUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
     const tiles = L.tileLayer(tileUrl, { attribution });
     tiles.addTo(map);
