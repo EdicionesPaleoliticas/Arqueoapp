@@ -55,7 +55,7 @@ export const createApp = ({ sitioModel }) => {
         const pageid = req.query.q; // ID de la página de Wikipedia que se desea consultar
 
         try {
-            const response = await fetch(`http://localhost:${PORT}/sitios/${pageid}`);
+            const response = await fetch(`https://arqueoapp.onrender.com/sitios/${pageid}`);
             if (response.ok) {
                 const sitioExistente = await response.json();
                 res.json({ sitioExistente }); // Esto debería imprimir el objeto encontrado o undefined si no se encuentra
