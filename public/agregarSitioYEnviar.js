@@ -6,7 +6,7 @@ const { consola } = obtenerElementosDOM();
 
 export async function agregarSitioYEnviar(dataSitio) {
     
-    const url = `https://arqueoapp.onrender.com//sitios/${dataSitio.idWiki}`;
+    const url = `https://arqueoapp.onrender.com/sitios/${dataSitio.idWiki}`;
     
     let existe = await fetch(url);
     
@@ -19,7 +19,7 @@ export async function agregarSitioYEnviar(dataSitio) {
         };
     
         try {
-            const response = await fetch('https://arqueoapp.onrender.com//sitios', options);
+            const response = await fetch('https:/arqueoapp.onrender.com//sitios', options);
             const json = await response.json();
             guardarElemento(dataSitio);
 
@@ -40,7 +40,7 @@ export async function agregarSitioYEnviar(dataSitio) {
         body: JSON.stringify(dataSitio)
     };
     try {
-        const response = await fetch(`https://arqueoapp.onrender.com//sitios/${dataSitio.idWiki}`, options);
+        const response = await fetch(`https://arqueoapp.onrender.com/sitios/${dataSitio.idWiki}`, options);
         const json = await response.json();
         consola.textContent = json;
         console.log(json);
