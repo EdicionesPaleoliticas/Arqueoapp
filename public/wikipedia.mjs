@@ -40,7 +40,7 @@ export async function mostrarResultadosWiki(data){
 
 export async function paginaPorID(ID_Wiki) {
 
-let urlWiki = `https://arqueoapp.onrender.com//api/wikipedia/porid?q=${ID_Wiki}`; //CAMBIAR EN PROD
+let urlWiki = `https://arqueoapp.onrender.com/api/wikipedia/porid?q=${ID_Wiki}`; //CAMBIAR EN PROD
 
 const response = await fetch(urlWiki);
 const data = await response.json();
