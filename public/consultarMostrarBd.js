@@ -4,7 +4,7 @@ import { guardarElemento }from './elementoExiste.mjs'
 
 export async function consultarMostrarBd(databaseCont) {
     try {
-        const response = await fetch('https://arqueoapp.onrender/sitios');
+        const response = await fetch('https://arqueoapp.onrender.com/sitios');
         if (!response.ok) {
             consola.textContent = 'Hubo un problema al cargar la base de datos';
             throw new Error('No respondió el servidor');
