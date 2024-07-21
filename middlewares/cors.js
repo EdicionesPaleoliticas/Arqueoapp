@@ -4,7 +4,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:5500',
   'http://localhost:1234',
   'http://localhost:8080',
-  //'http://localhost:3306'
+  `http://localhost:${process.env.PORT}`
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
