@@ -9,7 +9,7 @@ export async function buscarEnWikipedia() {
 
 export async function obtenerDatosWiki(consulta){
 
-    const url = `http://localhost:1234/api/wikipedia?q=${consulta}`; //Hay que cambiarla en PRODUCCION
+    const url = `https://arqueoapp.onrender.com//api/wikipedia?q=${consulta}`; //Hay que cambiarla en PRODUCCION
 
     const response = await fetch(url);
     const data = await response.json();
@@ -40,7 +40,7 @@ export async function mostrarResultadosWiki(data){
 
 export async function paginaPorID(ID_Wiki) {
 
-let urlWiki = `http://localhost:1234/api/wikipedia/porid?q=${ID_Wiki}`; //CAMBIAR EN PROD
+let urlWiki = `https://arqueoapp.onrender.com//api/wikipedia/porid?q=${ID_Wiki}`; //CAMBIAR EN PROD
 
 const response = await fetch(urlWiki);
 const data = await response.json();
