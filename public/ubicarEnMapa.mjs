@@ -52,7 +52,7 @@ export function ubicarEnMapa(lat, lon, titulo, idWiki, icono) {
 
 export async function ubicarTodo() {
     
-    const response = await fetch('http://localhost:1234/sitios');
+    const response = await fetch('https://arqueoapp.onrender.com/sitios');
     const json = await response.json();
     const sitios = json.sitios;
 
