@@ -1,9 +1,10 @@
-import express, { json } from "express";
+import express, { json } from 'express';
 import { corsMiddleware } from './middlewares/cors.js';
 import { createSitioRouter } from './routes/sitios.js';
 import { readJSON } from './utils.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fetch from 'node-fetch'; // Asegúrate de tener node-fetch instalado
 
 // Obtener el nombre de archivo y el directorio actual
 const __filename = fileURLToPath(import.meta.url);
@@ -46,46 +47,49 @@ export const createApp = ({ sitioModel }) => {
         }
     });
 
+    // CONFIGURACION DE PUERTO Y LISTEN
+    const PORT = process.env.PORT ?? 1234;
+
     // Consultar a Wiki API por ID
     app.get('/api/wikipedia/porid', async (req, res) => {
         const pageid = req.query.q; // ID de la página de Wikipedia que se desea consultar
 
-        const response = await fetch(`http://localhost:${PORT}/sitios/${pageid}`);
-        const sitioExistente = await response.json();
+        try {
+            const response = await fetch(`http://localhost:${PORT}/sitios/${pageid}`);
+            if (response.ok) {
+                const sitioExistente = await response.json();
+                res.json({ sitioExistente }); // Esto debería imprimir el objeto encontrado o undefined si no se encuentra
+                return;
+            } 
+        } catch (error) {
+            console.error('Error al consultar el sitio local:', error);
+        }
 
-        if (response.status !== 404) {
-            res.json({ sitioExistente }); // Esto debería imprimir el objeto encontrado o undefined si no se encuentra
-            return;
-        } else {
-            const apiUrl = 'https://es.wikipedia.org/w/api.php';
-            let params = {
-                action: 'query',
-                prop: 'extracts|pageimages|coordinates|info',
-                inprop: 'url',
-                exchars: '850',
-                pageids: pageid, // Utiliza el pageid del resultado
-                format: 'json',
-                piprop: 'thumbnail', // Solicitamos la miniatura
-                pithumbsize: 300
-            };
-            const url = `${apiUrl}?${new URLSearchParams(params)}`;
+        const apiUrl = 'https://es.wikipedia.org/w/api.php';
+        const params = {
+            action: 'query',
+            prop: 'extracts|pageimages|coordinates|info',
+            inprop: 'url',
+            exchars: '850',
+            pageids: pageid, // Utiliza el pageid del resultado
+            format: 'json',
+            piprop: 'thumbnail', // Solicitamos la miniatura
+            pithumbsize: 300
+        };
+        const url = `${apiUrl}?${new URLSearchParams(params)}`;
 
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Error al consultar la API de Wikipedia');
-                }
-                const data = await response.json();
-                res.json(data); // Devolver los datos obtenidos de Wikipedia al frontend
-            } catch (error) {
-                console.error('Error al obtener los datos de Wikipedia:', error);
-                res.status(500).json({ error: 'Error al obtener los datos de Wikipedia' });
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Error al consultar la API de Wikipedia');
             }
+            const data = await response.json();
+            res.json(data); // Devolver los datos obtenidos de Wikipedia al frontend
+        } catch (error) {
+            console.error('Error al obtener los datos de Wikipedia:', error);
+            res.status(500).json({ error: 'Error al obtener los datos de Wikipedia' });
         }
     });
-
-    // CONFIGURACION DE PUERTO Y LISTEN
-    const PORT = process.env.PORT ?? 1234;
 
     app.use(express.static(path.join(__dirname, 'public'))); // Añadido para servir archivos estáticos
 
