@@ -200,6 +200,8 @@ async function filtrarBase() {
     for (var i = 0; i < selectElement.options.length; i++) {
       if (selectElement.options[i].selected) {
         seleccion.push(selectElement.options[i].value);
+         console.log("selecElement.value");
+          console.log(selectElement.options[i].value);
       }
     }
 
@@ -211,7 +213,11 @@ async function filtrarBase() {
 
     try {
     const parametros = seleccion.map(opcion => `icono=${opcion}`).join('&');
+        console.log("parametros");
+        console.log(parametros);
     const url = `https://arqueoapp.onrender.com/sitios?${parametros}`;
+        console.log("url");
+        console.log(url);
 
     const response = await fetch(url);
     const json = await response.json();
