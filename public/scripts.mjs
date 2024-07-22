@@ -212,7 +212,7 @@ async function filtrarBase() {
     }
 
     try {
-    const parametros = seleccion.map(opcion => `icono=${opcion}`).join('&');
+    const parametros = seleccion.map(opcion => `icono=https://arqueoapp.onrender.com/img/icono_${opcion}.png`).join('&');
         console.log("parametros");
         console.log(parametros);
     const url = `https://arqueoapp.onrender.com/sitios?${parametros}`;
