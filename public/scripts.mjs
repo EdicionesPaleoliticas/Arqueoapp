@@ -194,43 +194,39 @@ const filtrarBtn = document.getElementById('filtrar-btn');
 filtrarBtn.addEventListener('click',filtrarBase);
 
 async function filtrarBase() {
-    // Obtener las opciones seleccionadas por el usuario
+     // Obtener las opciones seleccionadas por el usuario
     let seleccion = [];
     let selectElement = document.getElementById("filtro");
     for (var i = 0; i < selectElement.options.length; i++) {
-        if (selectElement.options[i].selected) {
-            seleccion.push(selectElement.options[i].value);
-            console.log("seleccion.value");
-            console.log(selectElement.options[i].value);
-        }
+      if (selectElement.options[i].selected) {
+        seleccion.push(selectElement.options[i].value);
+      }
     }
 
     // Verificar si se seleccionaron opciones
     if (seleccion.length === 0) {
-        console.log("Por favor, selecciona al menos una opción.");
-        return;
+      console.log("Por favor, selecciona al menos una opción.");
+      return;
     }
 
-    // Construir las URLs de los iconos seleccionados
-    const iconosSeleccionados = seleccion.map(opcion => `https://arqueoapp.onrender.com/img/icono_${opcion}.png`);
+    try {
+    const parametros = seleccion.map(opcion => `icono=${opcion}`).join('&');
+    const url = `https://arqueoapp.onrender/sitios?${parametros}`;
 
-    // Filtrar los sitios localmente
-    const sitiosFiltrados = filtrarPorIcono(sitios, iconosSeleccionados);
-    console.log(sitiosFiltrados);
+    const response = await fetch(url);
+    const json = await response.json();
+    console.log(json);
 
-    // Procesar los sitios filtrados (por ejemplo, guardarlos o mostrarlos en la UI)
-    for (let i = 0; i < sitiosFiltrados.length; i++) {
-        const element = sitiosFiltrados[i];
-        console.log("element");
-        console.log(element);
-        guardarElemento(element); // Asegúrate de que esta función esté definida
+    for (let i = 0; i < json.sitios.length; i++) {
+        const element = json.sitios[i];
+        //console.log(element)
+        guardarElemento(element);
+    }
+
+    } catch (err) {
+    console.error(err);
     }
 }
-
-function filtrarPorIcono(sitios, iconosSeleccionados) {
-    return sitios.filter(sitio => iconosSeleccionados.includes(sitio.icono));
-}
-
 
 
 const borrarTodoBtn = document.getElementById('btn-limpiar-todo');
