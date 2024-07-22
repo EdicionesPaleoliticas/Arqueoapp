@@ -210,9 +210,8 @@ async function filtrarBase() {
     }
 
     try {
-    const parametros = seleccion.map(opcion => `icono=${opcion}`).join('&');
-    const url = `https://arqueoapp.onrender/sitios?${parametros}`;
-
+    const parametros = seleccion.map(opcion => `icono=https://arqueoapp.onrender.com/img/icono_${opcion}`).join('&');
+    const url = `https://arqueoapp.onrender.com/sitios?${parametros}`;
     const response = await fetch(url);
     const json = await response.json();
     console.log(json);
