@@ -211,32 +211,26 @@ async function filtrarBase() {
         return;
     }
 
-    try {
-        // Construir los parámetros de la URL para los iconos seleccionados
-        const parametros = seleccion.map(opcion => `icono=https://arqueoapp.onrender.com/img/icono_${opcion}`).join('&');
-        console.log("parametros");
-        console.log(parametros);
-        const url = `https://arqueoapp.onrender.com/sitios?${parametros}`;
-        console.log("url");
-        console.log(url);
+    // Construir las URLs de los iconos seleccionados
+    const iconosSeleccionados = seleccion.map(opcion => `https://arqueoapp.onrender.com/img/icono_${opcion}.png`);
 
-        // Hacer la solicitud a la API
-        const response = await fetch(url);
-        const json = await response.json();
-        console.log(json);
+    // Filtrar los sitios localmente
+    const sitiosFiltrados = filtrarPorIcono(sitios, iconosSeleccionados);
+    console.log(sitiosFiltrados);
 
-        // Procesar los resultados y guardarlos
-        for (let i = 0; i < json.sitios.length; i++) {
-            const element = json.sitios[i];
-            console.log("element");  
-            console.log(element);
-            guardarElemento(element);
-        }
-
-    } catch (err) {
-        console.error(err);
+    // Procesar los sitios filtrados (por ejemplo, guardarlos o mostrarlos en la UI)
+    for (let i = 0; i < sitiosFiltrados.length; i++) {
+        const element = sitiosFiltrados[i];
+        console.log("element");
+        console.log(element);
+        guardarElemento(element); // Asegúrate de que esta función esté definida
     }
 }
+
+function filtrarPorIcono(sitios, iconosSeleccionados) {
+    return sitios.filter(sitio => iconosSeleccionados.includes(sitio.icono));
+}
+
 
 
 const borrarTodoBtn = document.getElementById('btn-limpiar-todo');
