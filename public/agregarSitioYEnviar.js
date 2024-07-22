@@ -24,7 +24,7 @@ export async function agregarSitioYEnviar(dataSitio) {
             guardarElemento(dataSitio);
 
             //consola.textContent = `¡Nooo se pudo guardar!`;
-            console.log(json.error)
+            console.log("ok")
             return;
             
         } catch (error) {
@@ -43,7 +43,7 @@ export async function agregarSitioYEnviar(dataSitio) {
         //const response = await fetch(`https://arqueoapp.onrender.com/sitios/${dataSitio.idWiki}`, options);
         //const json = await response.json();
         //consola.textContent = json;
-        console.log(json);
+        console.log("ok");
         guardarElemento(dataSitio);
 
     } catch (error) {
