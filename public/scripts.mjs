@@ -194,46 +194,50 @@ const filtrarBtn = document.getElementById('filtrar-btn');
 filtrarBtn.addEventListener('click',filtrarBase);
 
 async function filtrarBase() {
-     // Obtener las opciones seleccionadas por el usuario
+    // Obtener las opciones seleccionadas por el usuario
     let seleccion = [];
     let selectElement = document.getElementById("filtro");
     for (var i = 0; i < selectElement.options.length; i++) {
-      if (selectElement.options[i].selected) {
-        seleccion.push(selectElement.options[i].value);
-         console.log("selecElement.value");
-          console.log(selectElement.options[i].value);
-      }
+        if (selectElement.options[i].selected) {
+            seleccion.push(selectElement.options[i].value);
+            console.log("seleccion.value");
+            console.log(selectElement.options[i].value);
+        }
     }
 
     // Verificar si se seleccionaron opciones
     if (seleccion.length === 0) {
-      console.log("Por favor, selecciona al menos una opción.");
-      return;
+        console.log("Por favor, selecciona al menos una opción.");
+        return;
     }
 
     try {
-    const parametros = seleccion.map(opcion => `icono=https://arqueoapp.onrender.com/img/icono_${opcion}.png`).join('&');
+        // Construir los parámetros de la URL para los iconos seleccionados
+        const parametros = seleccion.map(opcion => `icono=https://arqueoapp.onrender.com/img/icono_${opcion}.png`).join('&');
         console.log("parametros");
         console.log(parametros);
-    const url = `https://arqueoapp.onrender.com/sitios?${parametros}`;
+        const url = `https://arqueoapp.onrender.com/sitios?${parametros}`;
         console.log("url");
         console.log(url);
 
-    const response = await fetch(url);
-    const json = await response.json();
-    console.log(json);
+        // Hacer la solicitud a la API
+        const response = await fetch(url);
+        const json = await response.json();
+        console.log(json);
 
-    for (let i = 0; i < json.sitios.length; i++) {
-        const element = json.sitios[i];
-        console.log("element")  
-        console.log(element)
-        guardarElemento(element);
-    }
+        // Procesar los resultados y guardarlos
+        for (let i = 0; i < json.sitios.length; i++) {
+            const element = json.sitios[i];
+            console.log("element");  
+            console.log(element);
+            guardarElemento(element);
+        }
 
     } catch (err) {
-    console.error(err);
+        console.error(err);
     }
 }
+
 
 const borrarTodoBtn = document.getElementById('btn-limpiar-todo');
 borrarTodoBtn.addEventListener('click',borrarTodo);
