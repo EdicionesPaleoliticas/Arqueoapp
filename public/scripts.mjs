@@ -205,16 +205,17 @@ async function filtrarBase() {
     const response = await fetch(url);
     const json = await response.json();
     console.log(json);
+    for (let i = 0; i < json.sitios.length; i++) {
+    if (json.sitios[i].icono === `https://arqueoapp.onrender.com/img/icono_${selectElement.value}.png`){               
+    guardarElemento(sitios[i]);
+        }
+    }
     
     } catch (err) {
     console.error(err);
     }
     
-    for (let i = 0; i < json.sitios.length; i++) {
-        if (json.sitios[i].icono === `https://arqueoapp.onrender.com/img/icono_${selectElement.value}.png`){               
-        guardarElemento(sitios[i]);
-        }
-    }
+
 }
 
 const borrarTodoBtn = document.getElementById('btn-limpiar-todo');
