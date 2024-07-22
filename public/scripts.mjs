@@ -194,10 +194,16 @@ const filtrarBtn = document.getElementById('filtrar-btn');
 filtrarBtn.addEventListener('click',filtrarBase);
 
 async function filtrarBase() {
-     // Obtener las opciones seleccionadas por el usuario
-    let selectElement = document.getElementById("filtro").selected;
-    console.log("selected");
-    console.log(selectElement);
+     // Obtener el elemento <select> por su ID
+    let selectElement = document.getElementById("filtro");
+    
+    // Obtener el índice de la opción seleccionada
+    let selectedIndex = selectElement.selectedIndex;
+    console.log("Índice seleccionado:", selectedIndex);
+
+    // Obtener el valor de la opción seleccionada
+    let selectedValue = selectElement.options[selectedIndex].value;
+    console.log("Valor seleccionado:", selectedValue);
 
     try {
     const url = "https://arqueoapp.onrender.com/sitios";
@@ -206,7 +212,7 @@ async function filtrarBase() {
     const json = await response.json();
     console.log(json);
     for (let i = 0; i < json.sitios.length; i++) {
-    if (json.sitios[i].icono === `https://arqueoapp.onrender.com/img/icono_${selectElement.value}.png`){               
+    if (json.sitios[i].icono === `https://arqueoapp.onrender.com/img/icono_${selectedValue}.png`){               
     guardarElemento(sitios[i]);
         }
     }
