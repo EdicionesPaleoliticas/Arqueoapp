@@ -42,7 +42,7 @@ export async function agregarSitioYEnviar(dataSitio) {
     try {
         //const response = await fetch(`https://arqueoapp.onrender.com/sitios/${dataSitio.idWiki}`, options);
         //const json = await response.json();
-        consola.textContent = json;
+        //consola.textContent = json;
         console.log(json);
         guardarElemento(dataSitio);
 
