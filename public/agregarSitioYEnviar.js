@@ -19,11 +19,11 @@ export async function agregarSitioYEnviar(dataSitio) {
         };
     
         try {
-            const response = await fetch('https:/arqueoapp.onrender.com/sitios', options);
-            const json = await response.json();
+            //const response = await fetch('https:/arqueoapp.onrender.com/sitios', options);
+            //const json = await response.json();
             guardarElemento(dataSitio);
 
-            consola.textContent = `¡Nooo se pudo guardar!`;
+            //consola.textContent = `¡Nooo se pudo guardar!`;
             console.log(json.error)
             return;
             
@@ -40,8 +40,8 @@ export async function agregarSitioYEnviar(dataSitio) {
         body: JSON.stringify(dataSitio)
     };
     try {
-        const response = await fetch(`https://arqueoapp.onrender.com/sitios/${dataSitio.idWiki}`, options);
-        const json = await response.json();
+        //const response = await fetch(`https://arqueoapp.onrender.com/sitios/${dataSitio.idWiki}`, options);
+        //const json = await response.json();
         consola.textContent = json;
         console.log(json);
         guardarElemento(dataSitio);
