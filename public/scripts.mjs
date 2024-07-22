@@ -225,7 +225,8 @@ async function filtrarBase() {
 
     for (let i = 0; i < json.sitios.length; i++) {
         const element = json.sitios[i];
-        //console.log(element)
+        console.log("element")  
+        console.log(element)
         guardarElemento(element);
     }
 
