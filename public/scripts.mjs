@@ -214,7 +214,6 @@ async function filtrarBase() {
     for (let i = 0; i < json.sitios.length; i++) {
     if (json.sitios[i].icono === `https://arqueoapp.onrender.com/img/icono_${selectedValue}.png`){               
     guardarElemento(json.sitios[i]);
-        console.log(json.sitios[i]);
         }
     }
     
