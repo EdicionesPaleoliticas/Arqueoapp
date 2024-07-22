@@ -195,32 +195,20 @@ filtrarBtn.addEventListener('click',filtrarBase);
 
 async function filtrarBase() {
      // Obtener las opciones seleccionadas por el usuario
-    let seleccion = [];
-    let selectElement = document.getElementById("filtro");
-    for (var i = 0; i < selectElement.options.length; i++) {
-      if (selectElement.options[i].selected) {
-        seleccion.push(selectElement.options[i].value);
-      }
-    }
-
-    // Verificar si se seleccionaron opciones
-    if (seleccion.length === 0) {
-      console.log("Por favor, selecciona al menos una opción.");
-      return;
-    }
+    let selectElement = document.getElementById("filtro").selected;
+    console.log("selected");
+    console.log(selectElement);
 
     try {
-    const parametros = seleccion.map(opcion => `icono=https://arqueoapp.onrender.com/img/icono_${opcion}.png`).join('&');
-    const url = `https://arqueoapp.onrender.com/sitios?${parametros}`;
+    const url = "https://arqueoapp.onrender.com/sitios";
     console.log(url);
     const response = await fetch(url);
     const json = await response.json();
     console.log(json);
-
+    
     for (let i = 0; i < json.sitios.length; i++) {
-        const element = json.sitios[i];
-        //console.log(element)
-        guardarElemento(element);
+        if (json.sitios[i].icono === `https://arqueoapp.onrender.com/img/icono_${selectElement.value}.png`){               
+        guardarElemento(sitios[i]);
     }
 
     } catch (err) {
