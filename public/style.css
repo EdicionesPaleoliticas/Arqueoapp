@@ -593,3 +593,43 @@ max-height: 80%;
     color: blue;
 }
 
+@media (max-width: 468px){
+    .map{
+        min-height: 50vh;
+        width: 80vw;    
+        margin: auto;
+    }
+
+    .botonera{
+        width: 100%;
+        right: unset;
+    }
+
+    .wiki-buscador-ctn{
+        flex-direction: unset;
+        bottom: unset;
+        position: unset;
+        margin-top:20px;
+    }
+
+    .contenedorsio{
+        position: unset;
+        justify-content: center;
+        display:flex;
+        width: 100%;
+    }
+    .bd-escritorio-ctn{
+        bottom: unset;
+        margin-top: 10px;
+    }
+    .panel-filtro{
+        width: unset;
+        right: unset;
+        margin-left: 50px;
+    }
+
+    .cruz-cerrar{
+        position: unset;
+        padding-left: 10px;
+    }
+}
