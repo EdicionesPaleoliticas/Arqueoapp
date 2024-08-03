@@ -594,6 +594,21 @@ max-height: 80%;
 }
 
 @media (max-width: 468px){
+    .body::after{
+        background-color: rgba(0, 0, 0, 0.856);
+        top:0;
+        color: aliceblue;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        content: 'Por favor, utilízalo como sitio de escritorio. Estamos trabajando en una version para móvil';
+        display: flex;
+        justify-content: center;
+        padding-top: 100px;
+        z-index: 9999999999!important;
+    }
+
+
     .map{
         min-height: 50vh;
         width: 80vw;    
